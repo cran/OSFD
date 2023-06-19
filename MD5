@@ -1,0 +1,12 @@
+c66db2dc0b1dad3d2c9f2593f42039d7 *DESCRIPTION
+a63ae9e57ac1135a96132344d154f240 *NAMESPACE
+aa8e9c745ab8680eecae4b1036ec4996 *R/OSFD.R
+7af8390be753ed3167658b8bc8f12d56 *R/RcppExports.R
+ce1f5e39517263213506d7da513b59a0 *inst/include/nanoflann.hpp
+e20653f332f47848ccbee7e3e52abc6f *man/OSFD-package.Rd
+79698cf0d0dd77ede3b1e3b971c23aa5 *man/OSFD.Rd
+c168fb0e681d12935e02ee6e49a561d5 *man/ball_unif.Rd
+2e95286359a916484fed68ef1aab6b69 *man/mMdist.Rd
+1c2206373e282c662422b8fff8a58e74 *src/Makevars
+1d837ef7a1df78da250f2b6ec108f713 *src/OSFD.cpp
+6a9255ad1540fd211fedfda24c653268 *src/RcppExports.cpp
