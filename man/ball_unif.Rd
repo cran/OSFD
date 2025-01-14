@@ -13,25 +13,25 @@ ball_unif(cen, rad, n, rand = TRUE)
 
 \item{n}{number of points.}
 
-\item{rand}{whether to generate random or quasi random points. Default value is TRUE.}
+\item{rand}{whether to generate random or quasi random points. The default value is TRUE.}
 }
 \value{
 a matrix of the generated points.
 }
 \description{
-\code{ball_unif} generate random or quasi-random uniform points in a p-dimensional ball.
+\code{ball_unif} generates random or quasi-random uniform points in a p-dimensional ball.
 }
 \details{
-\code{ball_unif} generate random uniform points or quasi uniform points by twinning algorithm in a p-dimensional ball.
+\code{ball_unif} generates random uniform points or quasi uniform points by twinning algorithm in a p-dimensional ball.
 }
 \examples{
 
-x = ball_unif(c(0,0),1,10,rand=FALSE)
-plot(x,type='p')
+x = ball_unif(c(0,0), 1, 10, rand=FALSE)
+plot(x, type='p')
 
 }
 \references{
-Vakayil, Akhil, and V. Roshan Joseph. "Data twinning." Statistical Analysis and Data Mining: The ASA Data Science Journal 15.5 (2022): 598-610.
+Vakayil, Akhil, and V. Roshan Joseph. (2022). "Data twinning". Statistical Analysis and Data Mining: The ASA Data Science Journal, 15(5), 598-610.
 
-Wang, Shangkun, Adam P. Generale, Surya R. Kalidindi, and V. Roshan Joseph. "Sequential Designs for Filling Output Spaces." Technometrics, to appear (2023).
+Wang, Shangkun, Adam P. Generale, Surya R. Kalidindi, and V. Roshan Joseph. (2024), "Sequential designs for filling output spaces", Technometrics, 66, 65–76.
 }

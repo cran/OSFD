@@ -76,6 +76,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// approx_gen
+arma::mat approx_gen(arma::mat X, Rcpp::List d, arma::uword p, bool rand, Nullable<NumericMatrix> twinsample_);
+RcppExport SEXP _OSFD_approx_gen(SEXP XSEXP, SEXP dSEXP, SEXP pSEXP, SEXP randSEXP, SEXP twinsample_SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type X(XSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type d(dSEXP);
+    Rcpp::traits::input_parameter< arma::uword >::type p(pSEXP);
+    Rcpp::traits::input_parameter< bool >::type rand(randSEXP);
+    Rcpp::traits::input_parameter< Nullable<NumericMatrix> >::type twinsample_(twinsample_SEXP);
+    rcpp_result_gen = Rcpp::wrap(approx_gen(X, d, p, rand, twinsample_));
+    return rcpp_result_gen;
+END_RCPP
+}
 // filldist_cpp
 arma::mat filldist_cpp(arma::mat M, arma::uword p, bool rand, Nullable<NumericMatrix> twinsample_);
 RcppExport SEXP _OSFD_filldist_cpp(SEXP MSEXP, SEXP pSEXP, SEXP randSEXP, SEXP twinsample_SEXP) {
@@ -91,18 +106,20 @@ BEGIN_RCPP
 END_RCPP
 }
 // perturb_cpp
-arma::rowvec perturb_cpp(arma::mat D, arma::vec filldist, Nullable<NumericMatrix> CAND_, bool EI, bool rand, Nullable<NumericMatrix> twinsample_);
-RcppExport SEXP _OSFD_perturb_cpp(SEXP DSEXP, SEXP filldistSEXP, SEXP CAND_SEXP, SEXP EISEXP, SEXP randSEXP, SEXP twinsample_SEXP) {
+arma::rowvec perturb_cpp(arma::mat D, arma::vec filldist, int q, Nullable<NumericMatrix> CAND_, std::string cri, double balance_ratio, bool rand, Nullable<NumericMatrix> twinsample_);
+RcppExport SEXP _OSFD_perturb_cpp(SEXP DSEXP, SEXP filldistSEXP, SEXP qSEXP, SEXP CAND_SEXP, SEXP criSEXP, SEXP balance_ratioSEXP, SEXP randSEXP, SEXP twinsample_SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::mat >::type D(DSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type filldist(filldistSEXP);
+    Rcpp::traits::input_parameter< int >::type q(qSEXP);
     Rcpp::traits::input_parameter< Nullable<NumericMatrix> >::type CAND_(CAND_SEXP);
-    Rcpp::traits::input_parameter< bool >::type EI(EISEXP);
+    Rcpp::traits::input_parameter< std::string >::type cri(criSEXP);
+    Rcpp::traits::input_parameter< double >::type balance_ratio(balance_ratioSEXP);
     Rcpp::traits::input_parameter< bool >::type rand(randSEXP);
     Rcpp::traits::input_parameter< Nullable<NumericMatrix> >::type twinsample_(twinsample_SEXP);
-    rcpp_result_gen = Rcpp::wrap(perturb_cpp(D, filldist, CAND_, EI, rand, twinsample_));
+    rcpp_result_gen = Rcpp::wrap(perturb_cpp(D, filldist, q, CAND_, cri, balance_ratio, rand, twinsample_));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -113,8 +130,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_OSFD_knn_my", (DL_FUNC) &_OSFD_knn_my, 2},
     {"_OSFD_runif_in_sphere_cpp", (DL_FUNC) &_OSFD_runif_in_sphere_cpp, 2},
     {"_OSFD_ball_gen", (DL_FUNC) &_OSFD_ball_gen, 7},
+    {"_OSFD_approx_gen", (DL_FUNC) &_OSFD_approx_gen, 5},
     {"_OSFD_filldist_cpp", (DL_FUNC) &_OSFD_filldist_cpp, 4},
-    {"_OSFD_perturb_cpp", (DL_FUNC) &_OSFD_perturb_cpp, 6},
+    {"_OSFD_perturb_cpp", (DL_FUNC) &_OSFD_perturb_cpp, 8},
     {NULL, NULL, 0}
 };
 

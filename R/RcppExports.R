@@ -21,11 +21,15 @@ ball_gen <- function(cen, rad, n, p = 0L, sub_ = NULL, rand = TRUE, twinsample_ 
     .Call(`_OSFD_ball_gen`, cen, rad, n, p, sub_, rand, twinsample_)
 }
 
+approx_gen <- function(X, d, p, rand = TRUE, twinsample_ = NULL) {
+    .Call(`_OSFD_approx_gen`, X, d, p, rand, twinsample_)
+}
+
 filldist_cpp <- function(M, p, rand = TRUE, twinsample_ = NULL) {
     .Call(`_OSFD_filldist_cpp`, M, p, rand, twinsample_)
 }
 
-perturb_cpp <- function(D, filldist, CAND_ = NULL, EI = TRUE, rand = TRUE, twinsample_ = NULL) {
-    .Call(`_OSFD_perturb_cpp`, D, filldist, CAND_, EI, rand, twinsample_)
+perturb_cpp <- function(D, filldist, q, CAND_ = NULL, cri = "EI", balance_ratio = 0.5, rand = TRUE, twinsample_ = NULL) {
+    .Call(`_OSFD_perturb_cpp`, D, filldist, q, CAND_, cri, balance_ratio, rand, twinsample_)
 }
 

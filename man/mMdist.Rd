@@ -16,20 +16,20 @@ the minimax distance.
 }
 \description{
 \code{mMdist} computes the minimax distance of a deisng in a specified region. A large uniform sample 
-from the specified region is need to compute the minimax distance.
+from the specified region is needed to compute the minimax distance.
 }
 \details{
 \code{mMdist} approximates the minimax distance of a set of points \code{X} by the large sample \code{X_space} in the space of interest.
 }
 \examples{
 # the minimax distance of a random Latin hypercube design
-D = randomLHS(5,2)
-mMdist(D,replicate(2,runif(1e5)))
+D = randomLHS(5, 2)
+mMdist(D, replicate(2, runif(1e5)))
 
 
 }
 \references{
-Johnson, Mark E., Leslie M. Moore, and Donald Ylvisaker. "Minimax and maximin distance designs." Journal of statistical planning and inference 26.2 (1990): 131-148. 
+Johnson, Mark E., Leslie M. Moore, and Donald Ylvisaker. (1990), "Minimax and Maximin Distance Designs”, Journal of Statistical Planning and Inference, 26, 131–148.
 
-Wang, Shangkun, Adam P. Generale, Surya R. Kalidindi, and V. Roshan Joseph. "Sequential Designs for Filling Output Spaces." Technometrics, to appear (2023).
+Wang, Shangkun, Adam P. Generale, Surya R. Kalidindi, and V. Roshan Joseph. (2024), "Sequential designs for filling output spaces", Technometrics, 66, 65–76.
 }
