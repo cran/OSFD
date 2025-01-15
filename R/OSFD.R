@@ -142,7 +142,7 @@ OSFD  = function(D=NULL, f, p, q, n_ini=NA, n,
 #' @param f black-box function.
 #' @param p input dimension.
 #' @param q output dimension.
-#' @param lambda the weight for the input space. Its value should be within [0, 1]. The default value is 0.5. When lambda=0, it reduces to OSFD.
+#' @param lambda the weight for the input space. Its value should be within [0, 1]. The default value is 0.5. When lambda=0, please directly use OSFD.
 #' @param n_ini the size of initial design. This initial size must be specified if D is not provided.
 #' @param n the size of the final design.
 #' @param scale whether to scale the output points to 0 to 1 for each dimension.
@@ -329,18 +329,19 @@ ball_unif = function (cen, rad, n, rand=TRUE){
 
 
 #' @name 
-#' space_filling_points
+#' spanfill
 #' @title
-#' Generate points to approximate a space based on existing points. 
+#' Generate points to approximate the space spanned by the existing points 
 #
 #' @description
-#' \code{space_filling_points} generates points to approximate a space based on existing points.
+#' \code{spanfill} generates points to approximate a space based on existing points.
 #' These approximate points can be used to find local fill distance in the space or be used as candidate points in active learning.
 #' 
 #' @details 
-#' \code{space_filling_points} generates points to approximate a space based on existing points. Details can be found in  Wang et al. (2024).
+#' \code{spanfill} generates points to approximate the space spanned by the existing points. Details can be found in  Wang et al. (2024).
 #' 
 #' @param X a matrix specifying the existing points
+#' @param bound a binary variable indicating whether to bound the generated points to 0 to 1 in each dimension. If bound=TRUE, all the generated points will be projected to the unit hypercube. The default value is FALSE.
 #' 
 #' @return a matrix of the generated points to approximate the space.
 #' 
@@ -352,10 +353,10 @@ ball_unif = function (cen, rad, n, rand=TRUE){
 #' @examples
 #' 
 #' X = matrix(runif(20), ncol=2)
-#' space_filling_points = space_filling_points(X)
-#' plot(space_filling_points, type='p')
+#' spanfill_points = spanfill(X)
+#' plot(spanfill_points, type='p')
 #' 
-space_filling_points = function (X){
+spanfill = function (X, bound=FALSE){
   q = ncol(X)
   X.u = unique(X) 
   no.u = dim(X.u)[1]
@@ -365,7 +366,11 @@ space_filling_points = function (X){
   n_ball = 2*q + 2*(q + 1) + 1 # number of point in each ball
   twinsample = runif_in_sphere_cpp(100*n_ball, q)
   twinsample = twinsample[twin(twinsample, r=100),, drop=FALSE]
-  return (approx_gen(X.u, knn.result, q, FALSE, twinsample))
+  approx_points = approx_gen(X.u, knn.result, q, FALSE, twinsample)
+  if (bound){
+    approx_points = pmax(pmin(approx_points, 1), 0)
+    }
+  return (approx_points)
 }
 
 

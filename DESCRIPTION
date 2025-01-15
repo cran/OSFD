@@ -1,8 +1,8 @@
 Package: OSFD
 Type: Package
 Title: Output Space-Filling Design
-Version: 2.0
-Date: 2025-01-12
+Version: 3.0
+Date: 2025-01-15
 Authors@R: 
     c(person("Shangkun", "Wang", , "sk_wang@gatech.edu", role = c("aut", "cre")),
     person("Roshan", "Joseph",,"roshan@gatech.edu", role = c("aut")))
@@ -16,7 +16,7 @@ Encoding: UTF-8
 NeedsCompilation: yes
 Maintainer: Shangkun Wang <sk_wang@gatech.edu>
 Repository: CRAN
-Packaged: 2025-01-14 22:29:42 UTC; s.k.wang
+Packaged: 2025-01-15 20:23:00 UTC; s.k.wang
 Author: Shangkun Wang [aut, cre],
   Roshan Joseph [aut]
-Date/Publication: 2025-01-14 23:40:16 UTC
+Date/Publication: 2025-01-15 22:20:02 UTC

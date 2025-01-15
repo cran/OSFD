@@ -27,7 +27,7 @@ IOSFD(
 
 \item{q}{output dimension.}
 
-\item{lambda}{the weight for the input space. Its value should be within [0, 1]. The default value is 0.5. When lambda=0, it reduces to OSFD.}
+\item{lambda}{the weight for the input space. Its value should be within [0, 1]. The default value is 0.5. When lambda=0, please directly use OSFD.}
 
 \item{n_ini}{the size of initial design. This initial size must be specified if D is not provided.}
 
