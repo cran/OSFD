@@ -183,7 +183,7 @@ arma::mat runif_in_sphere_cpp(arma::uword n, arma::uword p){
     Z_norm(i) = arma::norm(Z.row(i));// the norm of the Z vector
   }
   Z = Z / (Z_norm * Ones);
-  U = pow(U, 1./p);
+  U = arma::pow(U, 1./p);
   out = (U * Ones) % Z;
   return (out);
 }
@@ -414,8 +414,13 @@ arma::rowvec cri_iosfd(arma::mat D, arma::mat cand,
   int intrinsic_dim = std::min(p, q);
   // double out_vol = arma::sum(arma::pow(filldist_out, intrinsic_dim)) * 
   //   std::pow(M_PI, intrinsic_dim/2.0) / std::tgamma(intrinsic_dim/2.0 + 1);
-  double alpha = arma::as_scalar(arma::pow(arma::mean(arma::pow(filldist_out, intrinsic_dim)), 1.0/intrinsic_dim)) /
-    arma::as_scalar(arma::pow(arma::mean(arma::pow(filldist_in, p)), 1.0/p));
+  // double alpha = arma::as_scalar(arma::pow(arma::mean(arma::pow(filldist_out, intrinsic_dim)), 1.0/intrinsic_dim)) /
+  //   arma::as_scalar(arma::pow(arma::mean(arma::pow(filldist_in, p)), 1.0/p));
+  
+  double alpha =
+    std::pow(arma::as_scalar(arma::mean(arma::pow(filldist_out, intrinsic_dim))), 1.0/intrinsic_dim) /
+      std::pow(arma::as_scalar(arma::mean(arma::pow(filldist_in, p))), 1.0/p);
+  
   
   arma::vec balance_cri = lambda * filldist_in + (1-lambda) * filldist_out / alpha;
   
